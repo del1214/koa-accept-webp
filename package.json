@@ -1,6 +1,6 @@
 {
   "name": "accept-webp",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Connect/Express middleware for serving webp images when support is detected",
   "main": "index.js",
   "repository": {
