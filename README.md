@@ -1,58 +1,42 @@
-[![Build Status](https://travis-ci.org/msemenistyi/connect-image-optimus.png)](https://travis-ci.org/msemenistyi/connect-image-optimus)
-
-## Install
-> npm install connect-image-optimus
+## Installation
+`$ npm install accept-webp`
 
 ## Overview
-Middleware to server image in optimal format. Switches from `.jpg`, `.jpeg` or 
-`.png` to `.webp` or `.jxr` if possible.
-Works with [Connect](https://github.com/senchalabs/connect/) 
-and [Express](https://github.com/visionmedia/express).
+This is a piece of middlewear that can be used with [Express](http://expressjs.com/) and [Connect](https://github.com/senchalabs/connect/).
 
-Image-optimus analyzes **Accept** header of request and searches for `image/webp`.
-If search is successful, fs check for file with the same name but .webp extension 
-is performed. In case of existance, url is changed so that other middleware 
-(e.g. static) will serve webp format.   
-If there was no `image/webp` in **Accept** header, module performs a check on 
-**User-Agent** header. These are browsers supporting **webp** format:
-- Android Browser 4.0+ 
-- Chrome 23.0+
-- Opera 11.10+
-- Google Chrome (desktop) 17+
-- Google Chrome for Android version 25+
+This middlewear first looks at the `Accept` header of the HTTP request, and searches for `image/webp`. If the search is successful, it checks the filesystem for a file of the same name but with the .webp extension (myImage.webp instead of myImage.jpg). If it exists, req.url is changed so that other middleware (e.g. `express.static`) will serve webp format.
 
-The same check is performed for serving **jpeg-xr** images if possible.
-These are browsers supporting this format:
-- IE 9+
+Also upon success, the `Vary` header is set to `Accept` so that caching
+proxies can distingiuish which content to load for the same requested url.
 
-The last change made will be **Vary** header set to **Accept** so that caching
-proxies could distingiuish which content to load for the same requested url.
+The first argument of accept-webp (required) is the path to your static assets on the filesystem. It should generally be the same path that you pass to `express.static`.
+The second argument (optional) is either a single file extension (string) or a list of file extensions (array) for accept-webp to act upon.  
+accept-webp will not touch requests for file formats that are not in this list. If this argument omitted, it defaults to `['jpg', 'png', 'jpeg']`.
 
-##Usage
+## Usage
+```var acceptWebp = require('accept-webp');
+var express = require('express'); 
+var app = express();
 
-**Warning**: image-optimus should be used before a middleware that is serving 
-files so that it serves changed format file.   
+var staticPath = __dirname + '/static';
 
-```js
-var optimus = require('connect-image-optimus');
-
-var staticPath = __dirname + '/static/';
-
-app.use(optimus(staticPath));
-app.use(connect.static(staticPath));
+app.use(acceptWebp(staticPath, ['jpg', 'jpeg', 'png']));
+app.use(express.static(staticPath));
 ```
-##Contributing
-Feel free to open issues and send PRs, though make sure that you create tests
-for new functionality and amend ones for fixes and changes. 
 
-## Running tests
-Run `npm test` in order to see test results.
+**Warning**: accept-webp should be used before any middleware that is serving files (e.g. `express.static`) so that they know to serve the webp format file.
+
+## Why the fork?
+* I didn't like the idea of parsing the User Agent string to determine file format support.
+* I wanted the ability to define which file types are looked at, and which are ignored
+* The original version didn't allow the module to be used on multiple [apps/routers](http://expressjs.com/4x/api.html#router) each with different static file paths in Express. It shared the same `path` argument across each instance of the middlewear.
 
 ## License
 
 The MIT License (MIT)
 
 Copyright (c) 2014 Semenistyi Mykyta nikeiwe@gmail.com
+Copyright (c) 2015 Joshua Wise josh@joshuawise.ninja
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

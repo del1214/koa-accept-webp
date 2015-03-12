@@ -1,33 +1,27 @@
 {
-  "name": "accept-web-images",
+  "name": "accept-webp",
   "version": "0.5.0",
-  "description": "Connect/Express middleware for serving webp & jpegxr images when support is detected",
+  "description": "Connect/Express middleware for serving webp images when support is detected",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/JoshuaWise/accept-web-images.git"
+    "url": "https://github.com/JoshuaWise/accept-webp.git"
   },
   "keywords": [
     "image",
     "webp",
     "jpeg",
-    "jpegxr",
-    "jxr",
     "connect",
     "express",
     "middleware",
     "perfomance"
   ],
-  "author": "Joshua Wise",
+  "author": "Joshua Wise <josh@joshuawise.ninja> (http://joshuawise.ninja/)",
   "contributors": [
     "msemenistyi"
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/JoshuaWise/accept-web-images/issues"
-  },
-  "dependencies": {
-    "parseurl": "^1.3.0",
-    "useragent": "~2.0.8"
+    "url": "https://github.com/JoshuaWise/accept-webp/issues"
   }
 }
