@@ -4,7 +4,8 @@
 ## Overview
 This is a piece of middlewear that can be used with [Express](http://expressjs.com/) and [Connect](https://github.com/senchalabs/connect/).
 
-This middlewear first looks at the `Accept` header of the HTTP request, and searches for `image/webp`. If the search is successful, it checks the filesystem for a file of the same name but with the .webp extension (myImage.webp instead of myImage.jpg). If it exists, req.url is changed so that other middleware (e.g. `express.static`) will serve webp format.
+This middlewear first looks at the `Accept` header of the HTTP request, and searches for `image/webp`. If the search is successful, it checks the filesystem for a file of the same name but with the .webp extension (myImage.webp instead of myImage.jpg). If it exists, `req.url` is changed so that other middleware (e.g. `express.static`) will serve webp format.  
+`req.originalUrl` is unchanged (unlike the pre-forked version), so all future middlewear can rely on the integrity of the `originalUrl` property.
 
 Also upon success, the `Vary` header is set to `Accept` so that caching
 proxies can distingiuish which content to load for the same requested url.
