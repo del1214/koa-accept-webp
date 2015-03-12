@@ -15,7 +15,8 @@ The second argument (optional) is either a single file extension (string) or a l
 accept-webp will not touch requests for file formats that are not in this list. If this argument omitted, it defaults to `['jpg', 'png', 'jpeg']`.
 
 ## Usage
-```var acceptWebp = require('accept-webp');
+```
+var acceptWebp = require('accept-webp');
 var express = require('express'); 
 var app = express();
 
