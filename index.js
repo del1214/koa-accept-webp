@@ -17,9 +17,8 @@ function valueInArray(value, array) {
 }
 
 module.exports = function(dirname, extensions) {
-	var typeofExtensions = typeof extensions;
-	if (extensions && typeofExtensions === 'string') {extensions = [extensions];}
-	else if (typeofExtensions == undefined) {extensions = ['jpg', 'png', 'jpeg'];}
+	if (extensions && typeof extensions === 'string') {extensions = [extensions];}
+	else if (extensions == undefined) {extensions = ['jpg', 'png', 'jpeg'];}
 	return function(req, res, next) {
 		var pathname = urlParse(req.url).pathname;
 		var extpos = pathname.lastIndexOf('.');
