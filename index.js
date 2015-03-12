@@ -8,7 +8,7 @@
 var urlParse = require('url').parse;
 var pathJoin = require('path').join;
 var fsStat = require('fs').stat;
-	
+
 function valueInArray(value, array) {
 	for (var i=0, len=array.length; i<len; i++) {
 		if (value === array[i]) return true;
