@@ -26,7 +26,7 @@ proxies can distingiuish which content to load for the same requested url.
 
 The first argument of accept-webp (required) is the path to your static assets on the filesystem. It should generally be the same path that you pass to `express.static`.
 The second argument (optional) is either a single file extension (string) or a list of file extensions (array) for accept-webp to act upon.  
-accept-webp will not touch requests for file formats that are not in this list. If this argument omitted, it defaults to `['jpg', 'png', 'jpeg']`.
+accept-webp will not touch requests for file formats that are not in this list. If this argument is omitted, it defaults to `['jpg', 'png', 'jpeg']`.
 
 ## Why the fork?
 * I didn't like the idea of parsing the User Agent string to determine file format support.
