@@ -37,7 +37,7 @@ accept-webp will not touch requests for file formats that are not in this list. 
 
 The MIT License (MIT)
 
-Copyright (c) 2014 Semenistyi Mykyta nikeiwe@gmail.com
+Copyright (c) 2014 Semenistyi Mykyta nikeiwe@gmail.com  
 Copyright (c) 2015 Joshua Wise josh@joshuawise.ninja
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
