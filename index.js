@@ -8,6 +8,7 @@
 var urlParse = require('url').parse;
 var pathJoin = require('path').join;
 var fsStat = require('fs').stat;
+var vary = require('vary');
 
 function valueInArray(value, array) {
 	for (var i=0, len=array.length; i<len; i++) {
@@ -32,7 +33,7 @@ module.exports = function(dirname, extensions) {
 				if (err) {next();}
 				else if (stats.isFile()) {
 					req.url = req.url.replace(pathname, newPathname);
-					res.setHeader('Vary', 'Accept');
+					vary(res, 'Accept');
 					next();
 				} else {
 					next();

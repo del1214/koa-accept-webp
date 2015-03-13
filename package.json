@@ -23,5 +23,8 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/JoshuaWise/accept-webp/issues"
+  },
+  "dependencies": {
+    "vary": "^1.0.0"
   }
 }
