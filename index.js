@@ -21,6 +21,7 @@ module.exports = function(dirname, extensions) {
 	if (extensions && typeof extensions === 'string') {extensions = [extensions];}
 	else if (extensions == undefined) {extensions = ['jpg', 'png', 'jpeg'];}
 	return function(req, res, next) {
+		if (req.method.toUpperCase() !== 'GET') {next(); return;}
 		var pathname = urlParse(req.url).pathname;
 		var extpos = pathname.lastIndexOf('.');
 		var ext = pathname.substr(extpos + 1);
