@@ -32,6 +32,7 @@ accept-webp will not touch requests for file formats that are not in this list. 
 * I didn't like the idea of parsing the User Agent string to determine file format support.
 * I wanted the ability to define which file formats are looked at, and which are ignored
 * The original version didn't allow the module to be used on multiple [apps/routers](http://expressjs.com/4x/api.html#router) each with different static file paths in Express. In other words, it shared the same `path` argument across each instance of the middlewear.
+* The old version overwrote the `Vary` HTTP header, this one appends to it, so it's now more compatible with other modules such as (compression)[https://github.com/expressjs/compression].
 
 ## License
 
