@@ -7,6 +7,9 @@
     "test": "mocha --harmony-async-await ./test.js",
     "example": "node --harmony-async-await example.js"
   },
+  "engines": {
+    "node": ">=7"
+  },
   "author": "Guilherme Nagatomo",
   "license": "MIT",
   "devDependencies": {
