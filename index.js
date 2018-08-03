@@ -25,7 +25,7 @@ module.exports = function(dirname, extensions = VALID_EXTS) {
     }
 
     const newPathname = pathname.replace(ext, '') + '.webp'
-    const filePath = join(dirname, newPathname)
+    const filePath =  decodeURIComponent(join(dirname, newPathname))
 
     try {
       const stats = await new Promise((resolve, reject) => {
